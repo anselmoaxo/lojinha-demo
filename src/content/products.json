@@ -1,14 +1,128 @@
 {
   "items": [
-    { "id": "brigadeiro-tradicional", "name": "Brigadeiro tradicional", "description": "Chocolate belga e granulado crocante. Caixa com 12 unidades.", "price": 36, "image": "/images/produtos/brigadeiro.svg", "category": "Brigadeiros", "available": true, "featured": false, "options": [] },
-    { "id": "brigadeiro-gourmet", "name": "Brigadeiros gourmet sortidos", "description": "Caixa com 12 sabores: pistache, ninho com Nutella, maracujá e mais.", "price": 48, "image": "/images/produtos/brigadeiro-gourmet.svg", "category": "Brigadeiros", "available": true, "featured": true, "options": ["Caixa com 12", "Caixa com 24", "Caixa com 50"] },
-    { "id": "beijinho", "name": "Beijinho de coco", "description": "Coco fresco e cravo. Caixa com 12 unidades.", "price": 34, "image": "/images/produtos/beijinho.svg", "category": "Brigadeiros", "available": true, "featured": false, "options": [] },
-    { "id": "bolo-chocolate", "name": "Bolo de chocolate com morango", "description": "Massa fofinha, recheio de brigadeiro e morangos frescos. Serve 15 fatias.", "price": 120, "image": "/images/produtos/bolo-chocolate.svg", "category": "Bolos", "available": true, "featured": true, "options": ["1 kg", "2 kg"] },
-    { "id": "bolo-cenoura", "name": "Bolo de cenoura caseiro", "description": "Com cobertura de chocolate que derrete. Forma de 25 cm.", "price": 45, "image": "/images/produtos/bolo-cenoura.svg", "category": "Bolos", "available": true, "featured": false, "options": [] },
-    { "id": "bolo-pote", "name": "Bolo no pote", "description": "250 ml de camadas de massa e recheio. Ótimo para lembrancinha.", "price": 14, "image": "/images/produtos/bolo-pote.svg", "category": "Bolos", "available": true, "featured": false, "options": ["Ninho com morango", "Prestígio", "Red velvet"] },
-    { "id": "caixa-presente", "name": "Caixa presente Doce Encanto", "description": "Brigadeiros, bolo no pote, cookies e cartão com mensagem personalizada.", "price": 89.9, "image": "/images/produtos/caixa-presente.svg", "category": "Presentes", "available": true, "featured": true, "options": [] },
-    { "id": "cesta-cafe", "name": "Cesta de café da manhã", "description": "Pães, frutas, suco, bolo e doces para duas pessoas. Entrega até as 10h.", "price": 159.9, "image": "/images/produtos/cesta.svg", "category": "Presentes", "available": false, "featured": false, "options": [] },
-    { "id": "coxinha", "name": "Mini coxinhas", "description": "Frango com catupiry. Cento congelado ou frito na hora.", "price": 75, "image": "/images/produtos/coxinha.svg", "category": "Salgados", "available": true, "featured": false, "options": ["Congelado", "Frito na hora"] },
-    { "id": "limonada", "name": "Limonada suíça", "description": "Garrafa de 1 litro, feita no dia.", "price": 16, "image": "/images/produtos/limonada.svg", "category": "Bebidas", "available": true, "featured": false, "options": [] }
+    {
+      "price": 36,
+      "available": true,
+      "name": "Brigadeiro tradicional",
+      "featured": false,
+      "id": "brigadeiro-tradicional",
+      "image": "https://t3.ftcdn.net/jpg/18/94/51/54/360_F_1894515411_7yDjF3nktx9ItevKSty3oF7Iarr5hyVu.jpg",
+      "description": "Chocolate belga e granulado crocante. Caixa com 12 unidades.",
+      "category": "Brigadeiros",
+      "options": []
+    },
+    {
+      "price": 48,
+      "available": true,
+      "name": "Brigadeiros gourmet sortidos",
+      "featured": true,
+      "id": "brigadeiro-gourmet",
+      "image": "/images/produtos/brigadeiro-gourmet.svg",
+      "description": "Caixa com 12 sabores: pistache, ninho com Nutella, maracujá e mais.",
+      "category": "Brigadeiros",
+      "options": [
+        "Caixa com 12",
+        "Caixa com 24",
+        "Caixa com 50"
+      ]
+    },
+    {
+      "price": 34,
+      "available": true,
+      "name": "Beijinho de coco",
+      "featured": false,
+      "id": "beijinho",
+      "image": "/images/produtos/beijinho.svg",
+      "description": "Coco fresco e cravo. Caixa com 12 unidades.",
+      "category": "Brigadeiros",
+      "options": []
+    },
+    {
+      "price": 120,
+      "available": true,
+      "name": "Bolo de chocolate com morango",
+      "featured": true,
+      "id": "bolo-chocolate",
+      "image": "/images/produtos/bolo-chocolate.svg",
+      "description": "Massa fofinha, recheio de brigadeiro e morangos frescos. Serve 15 fatias.",
+      "category": "Bolos",
+      "options": [
+        "1 kg",
+        "2 kg"
+      ]
+    },
+    {
+      "price": 45,
+      "available": true,
+      "name": "Bolo de cenoura caseiro",
+      "featured": false,
+      "id": "bolo-cenoura",
+      "image": "/images/produtos/bolo-cenoura.svg",
+      "description": "Com cobertura de chocolate que derrete. Forma de 25 cm.",
+      "category": "Bolos",
+      "options": []
+    },
+    {
+      "price": 14,
+      "available": true,
+      "name": "Bolo no pote",
+      "featured": false,
+      "id": "bolo-pote",
+      "image": "/images/produtos/bolo-pote.svg",
+      "description": "250 ml de camadas de massa e recheio. Ótimo para lembrancinha.",
+      "category": "Bolos",
+      "options": [
+        "Ninho com morango",
+        "Prestígio",
+        "Red velvet"
+      ]
+    },
+    {
+      "price": 89.9,
+      "available": true,
+      "name": "Caixa presente Doce Encanto",
+      "featured": true,
+      "id": "caixa-presente",
+      "image": "/images/produtos/caixa-presente.svg",
+      "description": "Brigadeiros, bolo no pote, cookies e cartão com mensagem personalizada.",
+      "category": "Presentes",
+      "options": []
+    },
+    {
+      "price": 159.9,
+      "available": false,
+      "name": "Cesta de café da manhã",
+      "featured": false,
+      "id": "cesta-cafe",
+      "image": "/images/produtos/cesta.svg",
+      "description": "Pães, frutas, suco, bolo e doces para duas pessoas. Entrega até as 10h.",
+      "category": "Presentes",
+      "options": []
+    },
+    {
+      "price": 75,
+      "available": true,
+      "name": "Mini coxinhas",
+      "featured": false,
+      "id": "coxinha",
+      "image": "/images/produtos/coxinha.svg",
+      "description": "Frango com catupiry. Cento congelado ou frito na hora.",
+      "category": "Salgados",
+      "options": [
+        "Congelado",
+        "Frito na hora"
+      ]
+    },
+    {
+      "price": 16,
+      "available": true,
+      "name": "Limonada suíça",
+      "featured": false,
+      "id": "limonada",
+      "image": "/images/produtos/limonada.svg",
+      "description": "Garrafa de 1 litro, feita no dia.",
+      "category": "Bebidas",
+      "options": []
+    }
   ]
 }
