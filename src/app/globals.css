@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Store colors: change these to match the client's brand. */
+@theme inline {
+  --color-cream: #fdf7f3;
+  --color-soft: #f7e9e4;
+  --color-brand-200: #f2c4cf;
+  --color-brand-500: #d0637b;
+  --color-brand-700: #b4475e;
+  --color-ink: #2d2224;
+  --color-muted: #6f6266;
+  --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { background: var(--color-cream); color: var(--color-ink); font-family: var(--font-sans); }
+::selection { background: var(--color-brand-200); }
+a, button, input, select, textarea { outline-color: var(--color-brand-700); }
+
+@layer components {
+  .container-shell { width: min(100% - 2rem, 1180px); margin-inline: auto; }
+  .display-title { font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 800; line-height: 1; letter-spacing: -.035em; }
+  .section-title { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -.02em; }
+  .eyebrow { font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+  .nav-link { font-size: .9rem; font-weight: 600; color: var(--color-muted); }
+  .nav-link:hover { color: var(--color-brand-700); }
+
+  .button-primary, .button-secondary, .button-quiet, .button-whatsapp {
+    display: inline-flex; min-height: 2.9rem; align-items: center; justify-content: center; gap: .5rem;
+    border-radius: 999px; padding: .7rem 1.25rem; font-size: .88rem; font-weight: 800; transition: background-color .2s, transform .2s, border-color .2s;
+  }
+  .button-primary { background: var(--color-ink); color: white; }
+  .button-primary:hover:not(:disabled) { background: var(--color-brand-700); }
+  .button-primary:disabled { opacity: .45; cursor: not-allowed; }
+  .button-secondary { border: 1px solid rgb(45 34 36 / .2); }
+  .button-secondary:hover { border-color: var(--color-brand-700); color: var(--color-brand-700); }
+  .button-quiet { color: var(--color-brand-700); padding-inline: 0; }
+  .button-whatsapp { background: #1f8f4e; color: white; }
+  .button-whatsapp:hover { background: #17733e; }
+
+  .chip { border-radius: 999px; border: 1px solid rgb(45 34 36 / .15); padding: .5rem 1rem; font-size: .85rem; font-weight: 700; background: white; }
+  .chip:hover { border-color: var(--color-brand-700); }
+  .chip-active { background: var(--color-ink); border-color: var(--color-ink); color: white; }
+
+  .field-label { display: block; margin-bottom: .35rem; font-size: .78rem; font-weight: 800; }
+  .field { width: 100%; border: 1px solid rgb(45 34 36 / .18); border-radius: .9rem; background: white; padding: .7rem .9rem; font-size: 1rem; }
+  .field:focus { border-color: var(--color-brand-700); outline: 2px solid var(--color-brand-200); }
+  .choice { display: flex; cursor: pointer; align-items: center; justify-content: center; border-radius: .9rem; border: 1px solid rgb(45 34 36 / .18); background: white; padding: .7rem; text-align: center; font-size: .85rem; font-weight: 700; }
+  .choice-active { border-color: var(--color-ink); background: var(--color-ink); color: white; }
+  .choice:focus-within { outline: 2px solid var(--color-brand-700); outline-offset: 2px; }
+  .qty-button { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 999px; background: var(--color-soft); }
+  .qty-button:hover { background: var(--color-brand-200); }
+
+  .prose-text h2 { margin-top: 2rem; font-size: 1.25rem; font-weight: 800; }
+  .prose-text p { margin-top: .75rem; color: var(--color-muted); }
+
+  .skip-link { position: absolute; left: -999px; top: .5rem; z-index: 60; border-radius: .5rem; background: var(--color-ink); padding: .5rem 1rem; color: white; }
+  .skip-link:focus { left: .5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }

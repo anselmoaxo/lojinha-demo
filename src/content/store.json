@@ -1,0 +1,40 @@
+{
+  "name": "Doce Encanto",
+  "tagline": "Doces artesanais feitos por encomenda",
+  "description": "Brigadeiros, bolos e presentes feitos à mão, com ingredientes de verdade. Escolha no cardápio e faça o pedido pelo WhatsApp.",
+  "demoNotice": "Esta é uma loja de demonstração. Os produtos são fictícios e nenhum pedido é cobrado.",
+  "hero": {
+    "eyebrow": "Confeitaria artesanal",
+    "title": "Doces que viram presente",
+    "text": "Monte seu pedido em poucos cliques e envie pelo WhatsApp. A gente confirma o horário e a forma de pagamento com você.",
+    "image": "/images/produtos/caixa-presente.svg",
+    "imageAlt": "Caixa de presente com doces sortidos"
+  },
+  "about": {
+    "title": "Feito à mão, desde 2019",
+    "text": "A Doce Encanto começou na cozinha de casa e hoje atende festas, empresas e quem quer adoçar o dia. Cada pedido é preparado na hora, sem conservantes."
+  },
+  "contact": {
+    "whatsapp": "5511999999999",
+    "instagram": "https://www.instagram.com/",
+    "instagramHandle": "@doceencanto.demo",
+    "email": "contato@exemplo.com.br",
+    "address": "Rua das Flores, 123 - Centro, São Paulo - SP",
+    "hours": "Terça a sábado, das 9h às 18h"
+  },
+  "orders": {
+    "pickup": true,
+    "delivery": true,
+    "deliveryFee": 10,
+    "deliveryArea": "Entregamos em um raio de 8 km do centro.",
+    "minimumOrder": 30,
+    "payments": ["Pix", "Cartão na entrega", "Dinheiro"],
+    "notice": "Encomendas com pelo menos 1 dia de antecedência."
+  },
+  "categories": ["Brigadeiros", "Bolos", "Presentes", "Salgados", "Bebidas"],
+  "seo": {
+    "title": "Doce Encanto | Doces artesanais por encomenda",
+    "description": "Loja de demonstração: escolha doces artesanais, monte o carrinho e envie o pedido pelo WhatsApp.",
+    "image": "/og-image.png"
+  }
+}
