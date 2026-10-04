@@ -10,7 +10,7 @@ Os produtos são fictícios. É a vitrine para mostrar a clientes.
 
 ## Colocar no ar
 1. Settings → Pages → Source: **GitHub Actions**.
-2. Cada push na `main` publica o site. Sem domínio próprio, o endereço é `https://<usuario>.github.io/<repositorio>/`; o prefixo é aplicado sozinho.
+2. Cada push na `main` publica o site. Endereço atual: https://loja-demo.anselmotech.com.br. Sem domínio próprio, o endereço seria `https://<usuario>.github.io/<repositorio>/`; o prefixo é aplicado sozinho.
 3. Painel: crie o site no DecapBridge apontando para este repositório e troque `SITE_ID` em `public/admin/config.yml`.
 
 ## Adaptar para um cliente
