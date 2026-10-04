@@ -59,18 +59,18 @@ export function CartDrawer() {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true" aria-labelledby="carrinho-titulo">
-      <button type="button" aria-label="Fechar carrinho" className="absolute inset-0 bg-ink/40" onClick={() => setOpen(false)} tabIndex={-1} />
-      <div className="relative flex h-full w-full max-w-md flex-col bg-cream shadow-2xl">
-        <div className="flex items-center justify-between border-b border-ink/10 px-5 py-4">
-          <h2 id="carrinho-titulo" className="text-lg font-extrabold">Seu pedido</h2>
-          <button ref={closeRef} type="button" onClick={() => setOpen(false)} className="grid size-10 place-items-center rounded-full hover:bg-soft" aria-label="Fechar carrinho">
+      <button type="button" aria-label="Fechar carrinho" className="absolute inset-0 bg-cacau/50" onClick={() => setOpen(false)} tabIndex={-1} />
+      <div className="relative flex h-full w-full max-w-md flex-col bg-paper shadow-2xl">
+        <div className="flex items-center justify-between border-b border-seda px-5 py-4">
+          <h2 id="carrinho-titulo" className="font-display text-2xl">Seu pedido</h2>
+          <button ref={closeRef} type="button" onClick={() => setOpen(false)} className="grid size-10 place-items-center rounded-full hover:bg-seda" aria-label="Fechar carrinho">
             <X aria-hidden className="size-5" />
           </button>
         </div>
 
         <form onSubmit={send} className="flex-1 overflow-y-auto px-5 py-4" noValidate>
           {lines.length === 0 ? (
-            <p className="py-10 text-center text-muted">Seu carrinho está vazio. Escolha algo no cardápio.</p>
+            <p className="py-10 text-center text-cacau-soft">Seu carrinho está vazio. Escolha algo no cardápio.</p>
           ) : (
             <ul className="space-y-3">
               {lines.map((line) => (
@@ -79,7 +79,7 @@ export function CartDrawer() {
                   <img src={asset(line.product.image)} alt="" className="size-16 shrink-0 rounded-xl object-cover" />
                   <div className="min-w-0 flex-1">
                     <p className="font-bold leading-tight">{line.name}</p>
-                    {line.option ? <p className="text-xs text-muted">{line.option}</p> : null}
+                    {line.option ? <p className="text-xs text-cacau-soft">{line.option}</p> : null}
                     <div className="mt-2 flex items-center justify-between">
                       <div className="flex items-center gap-1">
                         <button type="button" className="qty-button" aria-label={`Diminuir ${line.name}`} onClick={() => (line.quantity > 1 ? setQuantity(line.key, line.quantity - 1) : remove(line.key))}>
@@ -123,10 +123,10 @@ export function CartDrawer() {
                 <div>
                   <label htmlFor="pedido-endereco" className="field-label">Endereço de entrega</label>
                   <textarea id="pedido-endereco" className="field" rows={2} autoComplete="street-address" value={customer.address} onChange={(event) => update({ address: event.target.value })} maxLength={300} required />
-                  <p className="mt-1 text-xs text-muted">{store.orders.deliveryArea}</p>
+                  <p className="mt-1 text-xs text-cacau-soft">{store.orders.deliveryArea}</p>
                 </div>
               ) : (
-                <p className="rounded-2xl bg-soft p-3 text-sm">Retirada em {store.contact.address}. {store.contact.hours}.</p>
+                <p className="rounded-2xl bg-seda p-3 text-sm">Retirada em {store.contact.address}. {store.contact.hours}.</p>
               )}
 
               <div>
@@ -146,7 +146,7 @@ export function CartDrawer() {
           ) : null}
 
           {lines.length > 0 ? (
-            <div className="sticky bottom-0 -mx-5 mt-6 border-t border-ink/10 bg-cream px-5 pb-2 pt-4">
+            <div className="sticky bottom-0 -mx-5 mt-6 border-t border-seda bg-paper px-5 pb-2 pt-4">
               <dl className="space-y-1 text-sm">
                 <div className="flex justify-between"><dt>Subtotal</dt><dd>{formatBRL(totals.subtotal)}</dd></div>
                 <div className="flex justify-between"><dt>{customer.fulfillment === "delivery" ? "Entrega" : "Retirada"}</dt><dd>{totals.delivery ? formatBRL(totals.delivery) : "Grátis"}</dd></div>
@@ -157,13 +157,13 @@ export function CartDrawer() {
                   {problems.map((problem) => <li key={problem}>{PROBLEM_TEXT[problem]}</li>)}
                 </ul>
               ) : null}
-              <button type="submit" className="button-whatsapp mt-4 w-full">
+              <button type="submit" className="btn btn-whatsapp mt-4 w-full">
                 <Send aria-hidden className="size-4" />
                 Enviar pedido pelo WhatsApp
               </button>
-              <div className="mt-2 flex items-center justify-between text-xs text-muted">
+              <div className="mt-2 flex items-center justify-between text-xs text-cacau-soft">
                 <span>{store.orders.notice}</span>
-                <button type="button" className="underline hover:text-ink" onClick={clear}>Esvaziar</button>
+                <button type="button" className="underline hover:text-cacau" onClick={clear}>Esvaziar</button>
               </div>
             </div>
           ) : null}

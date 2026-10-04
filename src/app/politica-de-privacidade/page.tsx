@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <section className="container-shell prose-text max-w-3xl py-12">
-      <h1 className="display-title">Política de privacidade</h1>
+    <section className="shell prose-text py-12">
+      <h1 className="type-title">Política de privacidade</h1>
       <h2>1. Pedidos</h2>
       <p>O carrinho fica salvo só no seu navegador. Quando você clica em &quot;Enviar pedido pelo WhatsApp&quot;, o WhatsApp abre com uma mensagem pronta contendo os produtos, seu nome, a forma de pagamento e, se escolher entrega, o endereço. Nada é enviado até você mandar essa mensagem.</p>
       <h2>2. O que guardamos</h2>

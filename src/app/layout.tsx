@@ -8,6 +8,11 @@ import { ANALYTICS } from "@/config/analytics";
 import { siteIndexable, siteOrigin, siteUrl } from "@/config/site";
 import { store } from "@/content";
 import { asset } from "@/lib/asset";
+import "@fontsource/figtree/latin-400.css";
+import "@fontsource/figtree/latin-700.css";
+import "@fontsource/figtree/latin-ext-400.css";
+import "@fontsource/figtree/latin-ext-700.css";
+import "@fontsource/shrikhand/latin-400.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
