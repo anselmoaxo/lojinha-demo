@@ -1,0 +1,32 @@
+import assert from "node:assert/strict";
+import nextEnv from "@next/env";
+nextEnv.loadEnvConfig(process.cwd());
+const indexable = process.env.NEXT_PUBLIC_SITE_INDEXABLE === "true";
+const base = process.argv[2] || "http://127.0.0.1:3000";
+const pages = ["/", "/produtos/", "/politica-de-privacidade/"];
+for (const path of pages) {
+  const response = await fetch(new URL(path, base));
+  assert.equal(response.status, 200, path);
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  const html = await response.text();
+  assert.equal((html.match(/<h1[ >]/g) || []).length, 1, path);
+  assert.match(html, /<link rel="canonical"/);
+  assert.match(html, /property="og:image"/);
+  if (path === "/produtos/") assert.match(html, /Adicionar/);
+  console.log("PASS", path);
+}
+const admin = await fetch(new URL("/admin/", base));
+assert.equal(admin.status, 200, "/admin/");
+const adminHtml = await admin.text();
+assert.match(adminHtml, /noindex/);
+assert.doesNotMatch(adminHtml, /unpkg\.com|jsdelivr/, "admin must not load code from a CDN");
+assert.equal((await fetch(new URL("/admin/vendor/decap-cms.js", base))).status, 200, "/admin/vendor/decap-cms.js");
+assert.equal((await fetch(new URL("/admin/config.yml", base))).status, 200, "/admin/config.yml");
+console.log("PASS admin panel /admin/");
+const sitemap = await (await fetch(new URL("/sitemap.xml", base))).text();
+if (indexable) assert.equal((sitemap.match(/<loc>/g) || []).length, 3);
+else assert.doesNotMatch(sitemap, /<loc>/);
+const robots = await (await fetch(new URL("/robots.txt", base))).text();
+assert.match(robots, indexable ? /Allow: \/(?:\r?\n|$)/ : /Disallow: \/(?:\r?\n|$)/);
+assert.equal((await fetch(new URL("/og-image.png", base))).status, 200);
+console.log("PASS metadata and assets");

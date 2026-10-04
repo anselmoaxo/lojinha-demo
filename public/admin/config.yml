@@ -1,0 +1,112 @@
+# Painel da loja (Decap CMS). O login é feito pelo DecapBridge (https://decapbridge.com);
+# cada "Publicar" grava um commit na main e o workflow "Deploy GitHub Pages" publica o site
+# em cerca de um minuto.
+backend:
+  name: git-gateway
+  repo: anselmoaxo/lojinha-demo
+  branch: main
+  # DecapBridge: troque SITE_ID pelo "Site ID" mostrado no DecapBridge. IDs públicos, sem segredo.
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/SITE_ID/pkce
+  auth_token_endpoint: /sites/SITE_ID/token
+  gateway_url: https://gateway.decapbridge.com
+  commit_messages:
+    create: "conteúdo: cria {{collection}} “{{slug}}” - {{author-name}} pelo painel"
+    update: "conteúdo: atualiza {{collection}} “{{slug}}” - {{author-name}} pelo painel"
+    delete: "conteúdo: remove {{collection}} “{{slug}}” - {{author-name}} pelo painel"
+    uploadMedia: "conteúdo: envia “{{path}}” - {{author-name}} pelo painel"
+    deleteMedia: "conteúdo: remove “{{path}}” - {{author-name}} pelo painel"
+    openAuthoring: "{{message}} - {{author-name}} pelo painel"
+
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+locale: pt
+site_url: https://anselmoaxo.github.io/lojinha-demo/
+display_url: https://anselmoaxo.github.io/lojinha-demo/
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: loja
+    label: Loja
+    files:
+      - name: produtos
+        label: Produtos
+        file: src/content/products.json
+        format: json
+        fields:
+          - name: items
+            label: Produtos
+            label_singular: Produto
+            widget: list
+            summary: "{{fields.name}} - R$ {{fields.price}}"
+            fields:
+              - { name: id, label: Identificador, widget: string, hint: "Código único, sem espaços. Exemplo: bolo-de-cenoura. Não mude depois de publicado.", pattern: ['^[a-z0-9-]+$', "Use só letras minúsculas, números e hífen."] }
+              - { name: name, label: Nome, widget: string }
+              - { name: description, label: Descrição, widget: text }
+              - { name: price, label: Preço (R$), widget: number, value_type: float, min: 0, step: 0.01, hint: "Use ponto para os centavos. Exemplo: 89.90" }
+              - { name: image, label: Foto, widget: image, hint: "Foto quadrada, de preferência com até 300 KB." }
+              - { name: category, label: Categoria, widget: string, hint: "Use o mesmo nome de uma categoria da seção Configurações da loja." }
+              - { name: available, label: Disponível, widget: boolean, default: true, hint: "Desligue quando acabar o estoque. O produto continua no site como Esgotado." }
+              - { name: featured, label: Destaque na página inicial, widget: boolean, default: false, required: false }
+              - { name: options, label: Opções (tamanho, sabor...), widget: list, required: false, field: { name: option, label: Opção, widget: string } }
+
+      - name: configuracoes
+        label: Configurações da loja
+        file: src/content/store.json
+        format: json
+        fields:
+          - { name: name, label: Nome da loja, widget: string }
+          - { name: tagline, label: Frase curta, widget: string }
+          - { name: description, label: Descrição, widget: text }
+          - { name: demoNotice, label: Aviso no rodapé, widget: string, required: false }
+          - name: hero
+            label: Topo da página inicial
+            widget: object
+            fields:
+              - { name: eyebrow, label: Frase acima do título, widget: string }
+              - { name: title, label: Título, widget: string }
+              - { name: text, label: Texto, widget: text }
+              - { name: image, label: Foto, widget: image }
+              - { name: imageAlt, label: Descrição da foto, widget: string, hint: "Descreva a foto para quem usa leitor de tela." }
+          - name: about
+            label: Sobre a loja
+            widget: object
+            fields:
+              - { name: title, label: Título, widget: string }
+              - { name: text, label: Texto, widget: text }
+          - name: contact
+            label: Contato
+            widget: object
+            fields:
+              - { name: whatsapp, label: WhatsApp que recebe os pedidos, widget: string, hint: "Somente números com país e DDD, por exemplo 5511999999999.", pattern: ['^\d{12,13}$', "Use 12 ou 13 números, sem espaços."] }
+              - { name: instagram, label: Link do Instagram, widget: string, hint: "Começando com https://" }
+              - { name: instagramHandle, label: Usuário do Instagram, widget: string }
+              - { name: email, label: E-mail, widget: string }
+              - { name: address, label: Endereço, widget: string }
+              - { name: hours, label: Horário de atendimento, widget: string }
+          - name: orders
+            label: Pedidos e entrega
+            widget: object
+            fields:
+              - { name: pickup, label: Aceita retirada no local, widget: boolean }
+              - { name: delivery, label: Faz entrega, widget: boolean }
+              - { name: deliveryFee, label: Taxa de entrega (R$), widget: number, value_type: float, min: 0, step: 0.01 }
+              - { name: deliveryArea, label: Área de entrega, widget: string }
+              - { name: minimumOrder, label: Pedido mínimo (R$), widget: number, value_type: float, min: 0, step: 0.01, hint: "Use 0 para não ter mínimo." }
+              - { name: payments, label: Formas de pagamento, widget: list, field: { name: payment, label: Forma de pagamento, widget: string } }
+              - { name: notice, label: Aviso sobre encomendas, widget: string }
+          - { name: categories, label: Categorias (na ordem do cardápio), widget: list, field: { name: category, label: Categoria, widget: string } }
+          - name: seo
+            label: Google e redes sociais
+            widget: object
+            fields:
+              - { name: title, label: Título da página, widget: string, hint: "Até 70 caracteres." }
+              - { name: description, label: Descrição, widget: text, hint: "Entre 70 e 170 caracteres." }
+              - { name: image, label: Imagem de compartilhamento, widget: image, hint: "1200 x 630 pixels." }
