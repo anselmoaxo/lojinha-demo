@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MarketplaceLinks } from "@/components/MarketplaceLinks";
 import { MenuItem } from "@/components/MenuItem";
 import { siteUrl } from "@/config/site";
 import { productCategories, products, store } from "@/content";
@@ -20,6 +21,7 @@ export default function ProductsPage() {
           <p className="eyebrow mb-3">Escolha seus favoritos</p>
           <h1 className="type-title">Nosso cardápio</h1>
           <p className="type-lead mt-3">{store.orders.notice}</p>
+          <MarketplaceLinks className="mt-6" />
         </div>
       </section>
 

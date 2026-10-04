@@ -113,6 +113,16 @@ collections:
               - { name: minimumOrder, label: Pedido mínimo (R$), widget: number, value_type: float, min: 0, step: 0.01, hint: "Use 0 para não ter mínimo." }
               - { name: payments, label: Formas de pagamento, widget: list, field: { name: payment, label: Forma de pagamento, widget: string } }
               - { name: notice, label: Aviso sobre encomendas, widget: string }
+          - name: marketplaces
+            label: Apps de entrega
+            label_singular: App
+            widget: list
+            required: false
+            hint: "Botões \"Pedir no ...\" na página inicial e no cardápio. Remova os que a loja não usa."
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Nome do app, widget: string, hint: "Exemplo: iFood, 99Food, Keeta" }
+              - { name: url, label: Link da loja no app, widget: string, hint: "Endereço completo da página da loja no app, começando com https://" }
           - { name: categories, label: Categorias (na ordem do cardápio), widget: list, field: { name: category, label: Categoria, widget: string } }
           - name: seo
             label: Google e redes sociais
