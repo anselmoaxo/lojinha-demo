@@ -7,7 +7,7 @@ export const ANALYTICS = {
   websiteId: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || WEBSITE_ID,
   scriptUrl: "https://cloud.umami.is/script.js",
   // Only the real domain is counted, so previews and local tests stay out of the numbers.
-  domains: "anselmoaxo.github.io",
+  domains: "loja-demo.anselmotech.com.br",
 } as const;
 
 type Umami = { track: (event: string, data?: Record<string, string | number>) => void };

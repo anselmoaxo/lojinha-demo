@@ -26,8 +26,8 @@ auth:
   avatar_url_claim: avatar_url
 
 locale: pt
-site_url: https://anselmoaxo.github.io/lojinha-demo/
-display_url: https://anselmoaxo.github.io/lojinha-demo/
+site_url: https://loja-demo.anselmotech.com.br
+display_url: https://loja-demo.anselmotech.com.br
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
