@@ -17,7 +17,8 @@ export default function ProductsPage() {
     <>
       <section className="bg-seda">
         <div className="shell py-12">
-          <h1 className="type-title">Cardápio</h1>
+          <p className="eyebrow mb-3">Escolha seus favoritos</p>
+          <h1 className="type-title">Nosso cardápio</h1>
           <p className="type-lead mt-3">{store.orders.notice}</p>
         </div>
       </section>
@@ -36,7 +37,7 @@ export default function ProductsPage() {
           return (
             <section key={category} id={slugify(category)} className="pt-12" aria-labelledby={`${slugify(category)}-titulo`}>
               <h2 id={`${slugify(category)}-titulo`} className="type-section">{category}</h2>
-              <div className="mt-2 divide-y-2 divide-seda">
+              <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((product) => <MenuItem key={product.id} product={product} />)}
               </div>
             </section>

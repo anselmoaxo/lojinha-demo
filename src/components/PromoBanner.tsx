@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { products, store } from "@/content";
-import { asset } from "@/lib/asset";
+import { ProductImage } from "./ProductImage";
 import { formatBRL, toCents } from "@/lib/order";
 import { useCart } from "./CartProvider";
 
@@ -16,8 +16,7 @@ export function PromoBanner() {
   return (
     <section className="bg-cacau text-paper" aria-labelledby="destaque-titulo">
       <div className="shell grid items-center gap-8 py-12 md:grid-cols-[1fr_1.2fr] md:py-16">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset(promo.image)} alt={promo.imageAlt} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
+        <div className="promo-photo"><ProductImage src={promo.image} alt={promo.imageAlt} />{promo.image.endsWith(".svg") ? <span className="photo-badge">Imagem ilustrativa</span> : null}</div>
         <div>
           <p className="font-bold text-pistache">Destaque da semana</p>
           <h2 id="destaque-titulo" className="type-title mt-2">{promo.title}</h2>

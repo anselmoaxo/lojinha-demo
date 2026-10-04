@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import type { Product } from "@/content";
-import { asset } from "@/lib/asset";
+import { ProductImage } from "./ProductImage";
 import { formatBRL, toCents } from "@/lib/order";
 import { useCart } from "./CartProvider";
 
@@ -14,23 +14,20 @@ export function MenuItem({ product, large = false }: { product: Product; large?:
   const selectId = useId();
 
   return (
-    <article className={large ? "flex flex-col gap-4" : "grid grid-cols-[5.5rem_1fr] gap-4 py-6 sm:grid-cols-[7rem_1fr] sm:gap-6"}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={asset(product.image)}
-        alt={product.name}
-        loading="lazy"
-        className={large ? "aspect-[4/3] w-full rounded-[2rem] object-cover" : "aspect-square w-full rounded-full object-cover ring-4 ring-seda"}
-      />
-      <div className="flex min-w-0 flex-col gap-2">
+    <article className={`product-card ${large ? "product-featured" : ""}`}>
+      <div className="product-photo">
+        <ProductImage src={product.image} alt={`${product.image.endsWith(".svg") ? "Ilustração" : "Fotografia"} de ${product.name}`} />
+        {!product.available ? <span className="photo-badge">Indisponível</span> : product.image.endsWith(".svg") ? <span className="photo-badge">Imagem ilustrativa</span> : null}
+      </div>
+      <div className="product-details flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4">
           <h3 className={large ? "text-[1.33rem] font-bold" : "text-lg font-bold"}>{product.name}</h3>
           <p className="font-bold text-morango">{formatBRL(toCents(product.price))}</p>
         </div>
         <p className="max-w-[60ch] text-cacau-soft">{product.description}</p>
-        <div className="mt-1 flex flex-wrap items-end gap-3">
+        <div className="product-actions mt-auto flex flex-wrap items-end gap-3 pt-4">
           {options.length > 0 ? (
-            <div className="min-w-40">
+            <div className="w-full min-w-0">
               <label htmlFor={selectId} className="sr-only">Opção de {product.name}</label>
               <select id={selectId} value={option} onChange={(event) => setOption(event.target.value)} className="field py-2" disabled={!product.available}>
                 {options.map((item) => <option key={item} value={item}>{item}</option>)}
@@ -38,7 +35,7 @@ export function MenuItem({ product, large = false }: { product: Product; large?:
             </div>
           ) : null}
           {product.available ? (
-            <button type="button" className="btn btn-cacau btn-small" onClick={() => add(product, option)}>Adicionar</button>
+            <button type="button" className="btn btn-cacau w-full" aria-label={`Adicionar ${product.name} ao pedido`} onClick={() => add(product, option)}>Adicionar ao pedido <span aria-hidden>+</span></button>
           ) : (
             <p className="rounded-full bg-seda px-4 py-2 text-sm font-bold">Esgotado no momento</p>
           )}

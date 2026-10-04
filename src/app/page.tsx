@@ -30,9 +30,10 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
-      <section className="bg-seda">
+      <section className="hero-section">
         <div className="shell grid items-center gap-10 py-14 md:grid-cols-[1.1fr_1fr] md:py-20">
           <div>
+            <p className="eyebrow mb-5">{store.hero.eyebrow}</p>
             <h1 className="type-hero">{store.hero.title}</h1>
             <p className="type-lead mt-6">{store.hero.text}</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -46,7 +47,7 @@ export default function Home() {
 
       <section className="shell py-14" aria-labelledby="como-pedir">
         <h2 id="como-pedir" className="sr-only">Como pedir</h2>
-        <ol className="grid gap-8 sm:grid-cols-3">
+        <ol className="order-steps grid gap-8 sm:grid-cols-3">
           {steps.map((step, index) => (
             <li key={step.title} className="flex gap-4">
               <span className="font-display text-4xl leading-none text-morango" aria-hidden>{index + 1}</span>
@@ -64,10 +65,10 @@ export default function Home() {
       {featured.length > 0 ? (
         <section className="shell py-10" aria-labelledby="mais-pedidos">
           <div className="flex flex-wrap items-baseline justify-between gap-4">
-            <h2 id="mais-pedidos" className="type-title">Os mais pedidos</h2>
+            <h2 id="mais-pedidos" className="type-title">Escolhas em destaque</h2>
             <Link href="/produtos/" className="link">Ver o cardápio completo</Link>
           </div>
-          <div className="mt-10 grid gap-12 md:grid-cols-3 md:gap-8">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map((product) => <MenuItem key={product.id} product={product} large />)}
           </div>
         </section>
@@ -75,7 +76,7 @@ export default function Home() {
 
       <div className="mt-10"><PromoBanner /></div>
 
-      <section id="onde" className="shell grid gap-12 py-16 md:grid-cols-2">
+      <section id="onde" className="about-section shell grid gap-12 py-16 md:grid-cols-2">
         <div>
           <h2 className="type-section">{store.about.title}</h2>
           <p className="mt-4 max-w-[60ch] text-cacau-soft">{store.about.text}</p>

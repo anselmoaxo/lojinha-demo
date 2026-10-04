@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { productCategories, products } from "@/content";
-import { asset } from "@/lib/asset";
+import { ProductImage } from "./ProductImage";
 import { slugify } from "@/lib/slugify";
 
 /** One tile per menu category, using the photo of its first available product. */
@@ -18,8 +18,7 @@ export function CategoryTiles() {
         {tiles.map((tile) => (
           <li key={tile.category}>
             <Link href={`/produtos/#${slugify(tile.category)}`} className="group block rounded-[1.75rem] bg-seda p-3 transition-colors hover:bg-seda-deep">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset(tile.image)} alt="" loading="lazy" className="aspect-square w-full rounded-[1.25rem] object-cover" />
+              <div className="category-photo"><ProductImage src={tile.image} alt="" sizes="(min-width: 1024px) 200px, 45vw" /></div>
               <span className="mt-3 block px-1 text-lg font-bold">{tile.category}</span>
               <span className="block px-1 pb-1 text-sm text-cacau-soft">{tile.count} {tile.count === 1 ? "opção" : "opções"}</span>
             </Link>

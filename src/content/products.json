@@ -6,7 +6,7 @@
       "name": "Brigadeiro tradicional",
       "featured": false,
       "id": "brigadeiro-tradicional",
-      "image": "https://t3.ftcdn.net/jpg/18/94/51/54/360_F_1894515411_7yDjF3nktx9ItevKSty3oF7Iarr5hyVu.jpg",
+      "image": "/images/photos/brigadeiro-tradicional.webp",
       "description": "Chocolate belga e granulado crocante. Caixa com 12 unidades.",
       "category": "Brigadeiros",
       "options": []
@@ -17,7 +17,7 @@
       "name": "Brigadeiros gourmet sortidos",
       "featured": true,
       "id": "brigadeiro-gourmet",
-      "image": "/images/produtos/brigadeiro-gourmet.svg",
+      "image": "/images/photos/brigadeiros.webp",
       "description": "Caixa com 12 sabores: pistache, ninho com Nutella, maracujá e mais.",
       "category": "Brigadeiros",
       "options": [
@@ -43,7 +43,7 @@
       "name": "Bolo de chocolate com morango",
       "featured": true,
       "id": "bolo-chocolate",
-      "image": "/images/produtos/bolo-chocolate.svg",
+      "image": "/images/photos/bolo-chocolate.webp",
       "description": "Massa fofinha, recheio de brigadeiro e morangos frescos. Serve 15 fatias.",
       "category": "Bolos",
       "options": [
@@ -57,7 +57,7 @@
       "name": "Bolo de cenoura caseiro",
       "featured": false,
       "id": "bolo-cenoura",
-      "image": "/images/produtos/bolo-cenoura.svg",
+      "image": "/images/photos/bolo-cenoura.webp",
       "description": "Com cobertura de chocolate que derrete. Forma de 25 cm.",
       "category": "Bolos",
       "options": []

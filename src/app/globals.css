@@ -2,8 +2,8 @@
 
 /* Doce Encanto: papel de seda, cacau e pistache. Change these tokens to match each client. */
 @theme inline {
-  --color-paper: #fff7f8;
-  --color-seda: #f8d9df;
+  --color-paper: #fffaf4;
+  --color-seda: #f8e4e2;
   --color-seda-deep: #f0bcc7;
   --color-cacau: #3a1f16;
   --color-cacau-soft: #6b4a3f;
@@ -49,10 +49,10 @@ body { background: var(--color-paper); color: var(--color-cacau); font-family: v
   .choice { display: flex; cursor: pointer; align-items: center; justify-content: center; border-radius: .9rem; border: 2px solid #ead1d6; background: white; padding: .65rem; text-align: center; font-size: .95rem; font-weight: 700; }
   .choice-active { border-color: var(--color-cacau); background: var(--color-cacau); color: var(--color-paper); }
   .choice:focus-within { outline: 3px solid var(--color-pistache-deep); outline-offset: 2px; }
-  .qty-button { display: grid; width: 2.1rem; height: 2.1rem; place-items: center; border-radius: 999px; background: var(--color-seda); }
+  .qty-button { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border-radius: 999px; background: var(--color-seda); }
   .qty-button:hover { background: var(--color-seda-deep); }
 
-  .menu-nav a { white-space: nowrap; border-radius: 999px; padding: .45rem 1rem; font-weight: 700; }
+  .menu-nav a { display: inline-flex; min-height: 44px; align-items: center; white-space: nowrap; border-radius: 999px; padding: .45rem 1rem; font-weight: 700; }
   .menu-nav a:hover { background: var(--color-seda); }
 
   .prose-text h2 { margin-top: 2rem; font-size: 1.33rem; font-weight: 700; }
@@ -60,6 +60,44 @@ body { background: var(--color-paper); color: var(--color-cacau); font-family: v
 
   .skip-link { position: absolute; left: -999px; top: .5rem; z-index: 60; border-radius: .5rem; background: var(--color-cacau); padding: .5rem 1rem; color: white; }
   .skip-link:focus { left: .5rem; }
+}
+
+.store-header { border-bottom: 1px solid #eadbd1; }
+.brand { font-size: clamp(1.2rem, 4.8vw, 1.6rem); }
+.brand-subtitle { display: block; margin-top: .4rem; font: 700 .65rem var(--font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--color-cacau-soft); }
+.mobile-nav { font-size: .9rem; font-weight: 700; }
+.mobile-nav a { min-height: 32px; display: flex; align-items: center; }
+.eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--color-morango); }
+.hero-section { background: radial-gradient(ellipse at 90% 20%, #f3d4cd, transparent 65%), #f9eee4; }
+.hero-section .type-hero { font-size: clamp(2.8rem, 6.5vw, 4.8rem); line-height: 1.06; }
+.hero-photo { position: relative; padding: 0 0 2rem 1rem; }
+.hero-photo::before { content: ""; position: absolute; inset: 1rem 1rem 1rem 0; background: #dfbca3; border-radius: 9rem 9rem 2rem 2rem; transform: rotate(-3deg); }
+.hero-photo picture { display: block; position: relative; }
+.hero-photo img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 1 / 1.04; object-fit: cover; border-radius: 9rem 9rem 2rem 2rem; }
+.hero-caption { position: relative; display: block; margin: -3rem 1rem 0; padding: 1.2rem 1.5rem; border: 1px solid #ecd9cd; border-radius: 1rem; background: var(--color-paper); box-shadow: 0 8px 24px #3a1f1610; }
+.order-steps { border-block: 1px solid #eadbd1; padding-block: 1.8rem; }
+.product-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid #eadbd1; border-radius: 1.5rem; background: #fffdf9; overflow: hidden; box-shadow: 0 4px 18px #3a1f1605; }
+.product-photo, .promo-photo { position: relative; aspect-ratio: 4 / 3; background: var(--color-seda); overflow: hidden; }
+.product-photo picture, .category-photo picture, .promo-photo picture { display: block; width: 100%; height: 100%; }
+.product-photo img, .category-photo img, .promo-photo img { width: 100%; height: 100%; object-fit: cover; }
+.product-details { padding: 1.3rem; }
+.product-details h3 { font-size: 1.18rem; line-height: 1.3; }
+.product-details > p { font-size: .95rem; }
+.product-actions .btn { justify-content: space-between; }
+.photo-badge { position: absolute; bottom: .8rem; left: .8rem; background: var(--color-paper); color: var(--color-cacau-soft); padding: .3rem .65rem; border-radius: 999px; font-size: .7rem; font-weight: 700; }
+.category-photo { aspect-ratio: 1; border-radius: 1.25rem; overflow: hidden; }
+.promo-photo { border-radius: 2rem; }
+.photo-fallback { display: grid; width: 100%; height: 100%; min-height: 8rem; place-items: center; background: var(--color-seda); color: var(--color-cacau-soft); font-size: .9rem; }
+.about-section { margin-top: 3rem; border-top: 1px solid #eadbd1; }
+.field:focus-visible { outline: 3px solid var(--color-pistache-deep); outline-offset: 2px; }
+@media (max-width: 639px) {
+  html { scroll-padding-top: 11rem; }
+  .menu-nav { top: 7.3rem; }
+  .hero-section .shell { padding-top: 2.5rem; padding-bottom: 2rem; gap: 2rem; }
+  .hero-photo img { aspect-ratio: 4 / 3; border-radius: 5rem 5rem 1.5rem 1.5rem; }
+  .hero-photo::before { border-radius: 5rem 5rem 1.5rem 1.5rem; }
+  .hero-caption { padding: 1rem; }
+  .store-header .btn { padding-inline: .8rem; font-size: .85rem; }
 }
 
 /* The one orchestrated moment: brigadeiros drop into the box on first load. */

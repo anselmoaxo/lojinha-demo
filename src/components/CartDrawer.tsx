@@ -18,6 +18,7 @@ const PROBLEM_TEXT: Record<OrderProblem, string> = {
 export function CartDrawer() {
   const { lines, open, setOpen, setQuantity, remove, clear } = useCart();
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [customer, setCustomer] = useState<Customer>({
     name: "",
     fulfillment: store.orders.delivery ? "delivery" : "pickup",
@@ -30,13 +31,23 @@ export function CartDrawer() {
 
   useEffect(() => {
     if (!open) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     closeRef.current?.focus();
-    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Tab") return;
+      const controls = Array.from(dialogRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]') ?? []).filter((element) => element.getClientRects().length > 0);
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      previousFocus?.focus();
     };
   }, [open, setOpen]);
 
@@ -60,7 +71,7 @@ export function CartDrawer() {
   return (
     <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true" aria-labelledby="carrinho-titulo">
       <button type="button" aria-label="Fechar carrinho" className="absolute inset-0 bg-cacau/50" onClick={() => setOpen(false)} tabIndex={-1} />
-      <div className="relative flex h-full w-full max-w-md flex-col bg-paper shadow-2xl">
+      <div ref={dialogRef} className="relative flex h-full w-full max-w-md flex-col bg-paper shadow-2xl">
         <div className="flex items-center justify-between border-b border-seda px-5 py-4">
           <h2 id="carrinho-titulo" className="font-display text-2xl">Seu pedido</h2>
           <button ref={closeRef} type="button" onClick={() => setOpen(false)} className="grid size-10 place-items-center rounded-full hover:bg-seda" aria-label="Fechar carrinho">
@@ -70,7 +81,11 @@ export function CartDrawer() {
 
         <form onSubmit={send} className="flex-1 overflow-y-auto px-5 py-4" noValidate>
           {lines.length === 0 ? (
-            <p className="py-10 text-center text-cacau-soft">Seu carrinho está vazio. Escolha algo no cardápio.</p>
+            <div className="rounded-2xl bg-seda/50 px-5 py-10 text-center">
+              <p className="font-display text-2xl">Um pedido cheio de encanto</p>
+              <p className="mt-3 text-cacau-soft">Seu carrinho está vazio. Escolha seus favoritos no cardápio.</p>
+              <button type="button" className="btn btn-cacau mt-6" onClick={() => setOpen(false)}>Continuar escolhendo</button>
+            </div>
           ) : (
             <ul className="space-y-3">
               {lines.map((line) => (

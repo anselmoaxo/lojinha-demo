@@ -19,7 +19,8 @@ export function Footer() {
           <li><Link href="/politica-de-privacidade/" className="hover:text-paper">Política de privacidade</Link></li>
         </ul>
       </div>
-      {store.demoNotice ? <p className="border-t border-white/10 py-4 text-center text-sm text-seda/70">{store.demoNotice}</p> : null}
+      <p className="shell pb-5 text-sm text-seda">Fotografias de referência: Phạm Thành Đạt, Caio Niceas e Gustavo Peres / <a className="underline" href="https://www.pexels.com/license/" target="_blank" rel="noopener noreferrer">Pexels</a>. As apresentações podem variar.</p>
+      {store.demoNotice ? <p className="border-t border-white/10 px-4 py-4 text-center text-sm text-seda">{store.demoNotice}</p> : null}
     </footer>
   );
 }

@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, copyFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 
 const VERSION = "3.16.3";
 const INTEGRITY =
@@ -20,12 +20,14 @@ if (existsSync(marker) && readFileSync(marker, "utf8").trim() === INTEGRITY) {
 
 const work = mkdtempSync(join(tmpdir(), "decap-"));
 try {
-  execFileSync("npm", ["pack", `decap-cms@${VERSION}`, "--silent", "--pack-destination", work], { stdio: ["ignore", "ignore", "inherit"] });
+  const npmArgs = ["pack", `decap-cms@${VERSION}`, "--silent", "--pack-destination", work];
+  const npmCli = process.env.npm_execpath || (process.platform === "win32" ? join(dirname(process.execPath), "node_modules", "npm", "bin", "npm-cli.js") : "");
+  execFileSync(npmCli ? process.execPath : "npm", npmCli ? [npmCli, ...npmArgs] : npmArgs, { stdio: ["ignore", "ignore", "inherit"] });
   const tarball = join(work, `decap-cms-${VERSION}.tgz`);
   const actual = `sha512-${createHash("sha512").update(readFileSync(tarball)).digest("base64")}`;
   if (actual !== INTEGRITY) throw new Error(`decap-cms ${VERSION} integrity mismatch: ${actual}`);
 
-  execFileSync("tar", ["xzf", tarball, "-C", work, "package/dist"]);
+  execFileSync("tar", ["xzf", `decap-cms-${VERSION}.tgz`, "package/dist"], { cwd: work });
   const dist = join(work, "package", "dist");
   rmSync(target, { recursive: true, force: true });
   mkdirSync(target, { recursive: true });
