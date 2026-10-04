@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BoxHero } from "@/components/BoxHero";
 import { CategoryTiles } from "@/components/CategoryTiles";
 import { PromoBanner } from "@/components/PromoBanner";
+import { MarketplaceLinks } from "@/components/MarketplaceLinks";
 import { MenuItem } from "@/components/MenuItem";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import { siteUrl } from "@/config/site";
@@ -94,6 +95,7 @@ export default function Home() {
             ) : null}
           </dl>
           <WhatsAppLink className="btn btn-whatsapp mt-6" />
+          <MarketplaceLinks className="mt-8" />
         </div>
       </section>
     </>

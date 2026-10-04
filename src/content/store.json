@@ -43,6 +43,20 @@
     ],
     "notice": "Encomendas com pelo menos 1 dia de antecedência."
   },
+  "marketplaces": [
+    {
+      "name": "iFood",
+      "url": "https://www.ifood.com.br/"
+    },
+    {
+      "name": "99Food",
+      "url": "https://99app.com/"
+    },
+    {
+      "name": "Keeta",
+      "url": "https://www.keeta.com/"
+    }
+  ],
   "categories": [
     "Brigadeiros",
     "Bolos",
