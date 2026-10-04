@@ -34,3 +34,9 @@ test("store settings are valid", () => {
   for (const key of ["deliveryFee", "minimumOrder"]) assert.ok(typeof store.orders[key] === "number" && store.orders[key] >= 0, key);
   for (const path of [store.hero.image, store.seo.image]) assert.ok(imageOk(path), path);
 });
+
+test("weekly highlight points to an existing product", () => {
+  if (!store.promo?.active) return;
+  assert.ok(items.some((product) => product.id === store.promo.productId), `promo.productId ${store.promo.productId}`);
+  assert.ok(imageOk(store.promo.image), store.promo.image);
+});

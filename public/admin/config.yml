@@ -75,6 +75,17 @@ collections:
               - { name: text, label: Texto, widget: text }
               - { name: image, label: Foto, widget: image }
               - { name: imageAlt, label: Descrição da foto, widget: string, hint: "Descreva a foto para quem usa leitor de tela." }
+          - name: promo
+            label: Destaque da semana
+            widget: object
+            hint: "Faixa escura na página inicial com um produto em destaque."
+            fields:
+              - { name: active, label: Mostrar o destaque, widget: boolean, default: true }
+              - { name: title, label: Título, widget: string }
+              - { name: text, label: Texto, widget: text }
+              - { name: productId, label: Produto, widget: relation, collection: loja, file: produtos, search_fields: ["items.*.name"], value_field: "items.*.id", display_fields: ["items.*.name"], hint: "O botão adiciona este produto ao pedido." }
+              - { name: image, label: Foto, widget: image }
+              - { name: imageAlt, label: Descrição da foto, widget: string }
           - name: about
             label: Sobre a loja
             widget: object

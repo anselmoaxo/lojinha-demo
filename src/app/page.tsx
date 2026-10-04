@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { BoxHero } from "@/components/BoxHero";
+import { CategoryTiles } from "@/components/CategoryTiles";
+import { PromoBanner } from "@/components/PromoBanner";
 import { MenuItem } from "@/components/MenuItem";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import { siteUrl } from "@/config/site";
@@ -57,6 +59,8 @@ export default function Home() {
         </ol>
       </section>
 
+      <CategoryTiles />
+
       {featured.length > 0 ? (
         <section className="shell py-10" aria-labelledby="mais-pedidos">
           <div className="flex flex-wrap items-baseline justify-between gap-4">
@@ -68,6 +72,8 @@ export default function Home() {
           </div>
         </section>
       ) : null}
+
+      <div className="mt-10"><PromoBanner /></div>
 
       <section id="onde" className="shell grid gap-12 py-16 md:grid-cols-2">
         <div>
