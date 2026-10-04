@@ -5,11 +5,11 @@ backend:
   name: git-gateway
   repo: anselmoaxo/lojinha-demo
   branch: main
-  # DecapBridge: troque SITE_ID pelo "Site ID" mostrado no DecapBridge. IDs públicos, sem segredo.
+  # DecapBridge (login por e-mail e senha). IDs públicos, sem segredo.
   auth_type: pkce
   base_url: https://auth.decapbridge.com
-  auth_endpoint: /sites/SITE_ID/pkce
-  auth_token_endpoint: /sites/SITE_ID/token
+  auth_endpoint: /sites/51f13aee-b5e0-4fdb-af8d-2ed2f4b39f2b/pkce
+  auth_token_endpoint: /sites/51f13aee-b5e0-4fdb-af8d-2ed2f4b39f2b/token
   gateway_url: https://gateway.decapbridge.com
   commit_messages:
     create: "conteúdo: cria {{collection}} “{{slug}}” - {{author-name}} pelo painel"
