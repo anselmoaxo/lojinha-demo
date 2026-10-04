@@ -3,23 +3,23 @@ import { store } from "@/content";
 
 export function Footer() {
   return (
-    <footer className="mt-20 bg-ink text-white/80">
-      <div className="container-shell grid gap-8 py-12 md:grid-cols-3">
+    <footer className="mt-24 bg-cacau text-seda">
+      <div className="shell grid gap-8 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="text-lg font-extrabold text-white">{store.name}</p>
-          <p className="mt-2 text-sm">{store.tagline}</p>
+          <p className="font-display text-3xl text-paper">{store.name}</p>
+          <p className="mt-2">{store.tagline}</p>
         </div>
-        <div className="text-sm">
+        <div>
           <p>{store.contact.address}</p>
           <p className="mt-1">{store.contact.hours}</p>
         </div>
-        <div className="flex flex-col gap-1 text-sm md:items-end">
-          <a href={store.contact.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white">{store.contact.instagramHandle}</a>
-          <a href={`mailto:${store.contact.email}`} className="hover:text-white">{store.contact.email}</a>
-          <Link href="/politica-de-privacidade/" className="hover:text-white">Política de privacidade</Link>
-        </div>
+        <ul className="space-y-1">
+          <li><a href={store.contact.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-paper">{store.contact.instagramHandle}</a></li>
+          <li><a href={`mailto:${store.contact.email}`} className="hover:text-paper">{store.contact.email}</a></li>
+          <li><Link href="/politica-de-privacidade/" className="hover:text-paper">Política de privacidade</Link></li>
+        </ul>
       </div>
-      <p className="border-t border-white/10 py-4 text-center text-xs text-white/50">{store.demoNotice}</p>
+      {store.demoNotice ? <p className="border-t border-white/10 py-4 text-center text-sm text-seda/70">{store.demoNotice}</p> : null}
     </footer>
   );
 }
